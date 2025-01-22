@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
+
 // Middlewares pour parser les requêtes JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 // Variables d'environnement
 const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.DB_URI;
+
+app.get('/', (req, res) => { //c'est pour tester le deploy dans le cloud vercel c'est pour ca j'ai ajouter cette hello world ici  
+  res.send('Hello World');
+});
+
 
 // Connexion à MongoDB
 mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
